@@ -1,1 +1,3 @@
-# React-QRGenerator
+# React QR Generator
+
+<img src="SS.png">
