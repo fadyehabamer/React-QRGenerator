@@ -7,3 +7,9 @@
 ### Built with
 - React
 - Vite
+- QR Code package
+- CSS + animation
+- Responsive Design
+
+
+
