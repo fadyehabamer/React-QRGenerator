@@ -10,6 +10,9 @@
 - QR Code package
 - CSS + animation
 - Responsive Design
+- Vercel for Deployment
 
-
+### Installation
+- npm install
+- npm run dev
 
