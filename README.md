@@ -19,7 +19,7 @@ in the browser with the [`qrcode`](https://www.npmjs.com/package/qrcode) package
 Nothing is sent to a server.
 
 ### Installation
-Requires Node.js 12.2+ (verified with Node 24).
+Requires Node.js 20.19+ or 22.12+ (verified with Node 24).
 
 ```bash
 npm install
