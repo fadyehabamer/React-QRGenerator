@@ -23,7 +23,7 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="background">
+      <div className="background" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>
@@ -49,7 +49,8 @@ function App() {
         QR Code Generator
       </h1>
       <form onSubmit={generateQR}>
-        <input type="text" placeholder="https://www.google.com"
+        <label htmlFor="qr-text" className="visually-hidden">Text or URL to encode</label>
+        <input id="qr-text" type="text" placeholder="https://www.google.com"
           value={url}
           onChange={(e) => { setUrl(e.target.value) }}
         />
@@ -57,7 +58,7 @@ function App() {
       </form>
       {qrcode &&
         <>
-          <img src={qrcode} alt="qrcode" />
+          <img src={qrcode} alt="Generated QR code" />
           <a href={qrcode} download='qrCode.png'> Download QR Code</a>
         </>
       }

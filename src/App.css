@@ -57,6 +57,25 @@ input[type="text"] {
 input:focus {
   outline: none;
 }
+input:focus-visible {
+  border-bottom: 2px solid #8b5cf6;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #8b5cf6;
+  outline-offset: 2px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 /* change color of placeholder */
 input::-webkit-input-placeholder {
   color:rgb(175, 175, 175);
@@ -303,4 +322,10 @@ img {
   animation-delay: -21s;
   transform-origin: 11vw 16vh;
   box-shadow: -40vmin 0 5.826129634631883vmin currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background span {
+    animation: none;
+  }
 }
