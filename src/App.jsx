@@ -6,13 +6,19 @@ function App() {
   const [url, setUrl] = useState('')
   const [qrcode, setQrcode] = useState('')
 
-  const generateQR = () => {
+  const generateQR = (e) => {
+    e.preventDefault()
+    const text = url.trim()
+    if (!text) {
+      return
+    }
 
-    QRCode.toDataURL(url, (err, url) => {
+    QRCode.toDataURL(text, (err, dataUrl) => {
       if (err) {
         alert(err)
+        return
       }
-      setQrcode(url)
+      setQrcode(dataUrl)
     })
   }
   return (
@@ -42,11 +48,13 @@ function App() {
       <h1>
         QR Code Generator
       </h1>
-      <input type="text" placeholder="https://www.google.com"
-        value={url}
-        onChange={(e) => { setUrl(e.target.value) }}
-      />
-      <button onClick={generateQR}>Generate</button>
+      <form onSubmit={generateQR}>
+        <input type="text" placeholder="https://www.google.com"
+          value={url}
+          onChange={(e) => { setUrl(e.target.value) }}
+        />
+        <button type="submit" disabled={!url.trim()}>Generate</button>
+      </form>
       {qrcode &&
         <>
           <img src={qrcode} alt="qrcode" />
