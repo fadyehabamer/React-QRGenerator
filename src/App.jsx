@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import QRCode from 'qrcode'
+import { QR_DOWNLOAD_FILENAME, canGenerateQr, generateQrDataUrl, normalizeQrText } from './qr'
 import './App.css'
 
 function App() {
@@ -8,17 +8,12 @@ function App() {
 
   const generateQR = (e) => {
     e.preventDefault()
-    const text = url.trim()
-    if (!text) {
+    if (!canGenerateQr(url)) {
       return
     }
 
-    QRCode.toDataURL(text, (err, dataUrl) => {
-      if (err) {
-        alert(err)
-        return
-      }
-      setQrcode(dataUrl)
+    generateQrDataUrl(normalizeQrText(url)).then(setQrcode, (err) => {
+      alert(err)
     })
   }
   return (
@@ -54,12 +49,12 @@ function App() {
           value={url}
           onChange={(e) => { setUrl(e.target.value) }}
         />
-        <button type="submit" disabled={!url.trim()}>Generate</button>
+        <button type="submit" disabled={!canGenerateQr(url)}>Generate</button>
       </form>
       {qrcode &&
         <>
           <img src={qrcode} alt="Generated QR code" />
-          <a href={qrcode} download='qrCode.png'> Download QR Code</a>
+          <a href={qrcode} download={QR_DOWNLOAD_FILENAME}> Download QR Code</a>
         </>
       }
     </div>
