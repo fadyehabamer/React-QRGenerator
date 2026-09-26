@@ -1,5 +1,7 @@
 # React QR Generator
 
+[![CI](https://github.com/fadyehabamer/React-QRGenerator/actions/workflows/ci.yml/badge.svg)](https://github.com/fadyehabamer/React-QRGenerator/actions/workflows/ci.yml)
+
 <img src="SS.png" alt="Screenshot of the QR code generator">
 
 > React Application that generates a QR Code and also able to be downloaded as an image
@@ -32,3 +34,5 @@ npm run dev
 | `npm run dev` | Start the Vite dev server |
 | `npm run build` | Production build into `dist/` |
 | `npm run preview` | Serve the production build locally |
+| `npm test` | Run the Vitest test suite once |
+| `npm run lint` | Lint the project with ESLint |
